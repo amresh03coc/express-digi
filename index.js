@@ -1,7 +1,8 @@
+import 'dotenv/config'
 import express from 'express'
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 //send the data: 
 
@@ -70,7 +71,7 @@ app.delete('/cars/:id', (req,res)=>{
     return res.status(204).send('deleted')
 
 })
-
+//port should not be defined like this, will cause error during deployment. So to use .env in which port will be defined to maintain the security.
 app.listen(port, ()=>{
     console.log(`Server is running at port: ${port}...`)
 })
